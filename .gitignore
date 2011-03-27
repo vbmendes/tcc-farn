@@ -1,0 +1,8 @@
+server/.installed.cfg
+server/bin
+server/develop-eggs
+server/eggs
+server/parts
+*.egg-info
+*.pyc
+*.pyo
