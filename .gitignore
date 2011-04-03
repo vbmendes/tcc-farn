@@ -6,3 +6,12 @@ server/parts
 *.egg-info
 *.pyc
 *.pyo
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.glo
+*.lof
+*.log
+*.toc
+*~

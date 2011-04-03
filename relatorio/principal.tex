@@ -1,0 +1,266 @@
+%%
+%% Arquivo principal para:
+%% - teses de doutorado
+%% - dissertações de mestrado
+%% - exames de qualificao de mestrado e doutorado
+%%
+%% NOTA: A PUBLICAÇÃO DESTE MODELO VISA APENAS ORIENTAR OS PÓS-GRADUANDOS
+%% NA PREPARAÇÃO DE SEUS TEXTOS. O PPgEE DA UFRN NÃO PROVÊ ASSISTÊNCIA NO
+%% USO DAS FERRAMENTAS NECESSÁRIAS AO USO DESTE MODELO (LATEX, XFIG, ETC.)
+%%
+%% Adelardo Medeiros, dezembro de 2005.
+
+% DEFINIÇÕES GLOBAIS
+
+% Esta primeira linha dá informações gerais sobre o documento.
+% PARA A VERSÃO FINAL:
+% papel A4, letra grande (12pt), openright (capítulos só iniciam em
+% página direita, se necessário incluindo uma pgina em branco),
+% twoside (o documento vai ser impresso em frente e costa)
+\documentclass[a4paper,12pt,openright,twoside]{book}
+% PARA A QUALIFICAÇÃO E PARA A VERSÃO INICIAL:
+% papel A4, letra grande (12pt), openany (capítulos iniciam em
+% qualquer página), oneside (o documento vai ser impresso só na frente)
+%\documentclass[a4paper,12pt,openany,oneside]{book}
+
+% PACOTES OBRIGATÓRIOS
+
+% Use estes pacotes para poder digitar diretamente as letras com acento
+% e para que a hifenização funcione corretamente
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+% Para usar fontes standard ao invés das do LaTeX (gera melhores PDFs)
+\usepackage{pslatex}
+% Para a hifenização em português
+\usepackage[portuges, brazil]{babel}
+% Para que os primeiros parágrafos das seções também sejam indentados
+\usepackage{indentfirst}
+% Para poder incluir gráficos (figuras)
+\usepackage{graphicx}
+% Para poder fazer glossário ou lista de símbolos
+% Use a segunda opção se quiser incluir na definição do símbolo a
+% página e/ou a equação onde ela foi definida
+% \usepackage[portuguese,noprefix]{nomencl}
+%\usepackage[portuguese,noprefix,refeq,refpage]{nomencl}
+% Para permitir espaçamento simples, 1 1/2 e duplo
+\usepackage{setspace}
+% Para usar alguns comandos matemáticos avançados muito úteis
+\usepackage{amsmath}
+% Para poder usar o ambiente "comment"
+\usepackage{verbatim}
+% Para poder ter tabelas com colunas de largura auto-ajustável
+\usepackage{tabularx}
+% Para executar um comando depois do fim da página corrente
+\usepackage{afterpage}
+% Para formatar URLs (endereços da Web)
+\usepackage{url}
+% Para reduzir os espaços entre os ítens (itemize, enumerate, etc.)
+% Este pacote não faz parte da distribuição padrão do LaTeX.
+\usepackage{noitemsep}
+% Para as citações bibliográficas
+\usepackage[abbr]{harvard}	% As chamadas são sempre abreviadas
+\harvardparenthesis{square}	% Colchetes nas chamadas
+\harvardyearparenthesis{round}	% Parêntesis nos anos das referências
+%\renewcommand{\harvardand}{e}	% Substituir "&" por "e" nas referências
+
+% PACOTES OPCIONAIS
+
+% Para poder incluir arquivos Postscript com cores (do Xfig, por exemplo)
+\usepackage{color}
+% Para ter células em tabelas que ocupam mais de uma linha
+\usepackage{multirow}
+% Para poder ter tabelas longas em mais de uma página
+%\usepackage{longtable}
+% Para poder escrever partes do texto em "n" colunas
+%\usepackage{multicol}
+% Se você quiser personalizar os cabeçalhos das páginas
+%\usepackage{fancyheadings}
+% Para incluir algoritmos e listagens de códigos
+%\usepackage{listings}
+% Capítulos com títulos em um formato "decorado"
+\usepackage{capitulos}
+
+% As definiçõoes dos novos comandos estão agrupadas no arquivo "comandos.tex"
+% Esta separação é opcional: se você preferir, pode por as definicoes
+% diretamente neste arquivo
+\input{comandos.tex}
+
+%
+% As margens
+%
+
+% Direcao horizontal
+
+% Margem interna
+% Nas paginas impares
+\setlength{\oddsidemargin}{3.5cm}         % Margem real desejada
+% Nas paginas pares
+\setlength{\evensidemargin}{2.5cm}        % Margem real desejada
+% Largura do texto
+\setlength{\textwidth}{15cm}
+% As margens laterais no LaTeX sao sempre 1 polegada maiores do que as
+% fixadas. Se foi fixada \setlength{\oddsidemargin}{3.5cm}, a margem
+% real seria de 3.5+2.54=6.04cm. Para permitir que voce nao tenha que
+% fazer esta conta, pode usar o numero desejado nas linhas anteriores
+% e a gente subtrai 1in nas proximas linhas
+\addtolength{\oddsidemargin}{-1in}
+\addtolength{\evensidemargin}{-1in}
+% Note que a margem direita nao e fixada diretamente:
+% ela e obtida subtraindo-se os outros valores da largura da pagina.
+% 3.5+15+x=21cm (largura A4) -> x = margem externa = 2.5cm
+
+% Direcao vertical
+
+% Margem superior (entre o topo da folha e o cabecalho), altura do
+% cabecalho e distancia entre o fim do cabecalho e o inicio do texto
+\setlength{\topmargin}{2.0cm}             % Margem real desejada
+\setlength{\headheight}{1.0cm}
+\setlength{\headsep}{1.0cm}
+% Altura do texto (sem cabecalho e rodape)
+\setlength{\textheight}{22.7cm}
+% Distancia do fim do texto ao rodape
+\setlength{\footskip}{1.0cm}
+% A margem superior no LaTeX e sempre 1 polegada maior do que a
+% fixada. Se foi fixada \setlength{\topmargin}{2.0cm}, a margem
+%real seria de 2.0+2.54=4.54cm. Para permitir que voce nao tenha que
+% fazer esta conta, pode usar o numero desejado na linha anterior
+% e a gente subtrai 1in na proxima linha
+\addtolength{\topmargin}{-1in}
+% Note que a margem inferior nao e fixada diretamente:
+% ela e obtida subtraindo-se os outros valores, sem incluir o
+% "footskip", da altura da pagina.
+% 2.0+1.0+1.0+22.7+x=29.7cm (altura A4) -> x = margem inferior = 3cm
+
+%
+% O estilo das referencias bibliograficas
+%
+
+\bibliographystyle{ppgee}
+
+%
+% O espacamento entre linhas
+%
+
+% As paginas iniciais sao sempre em espacamento simples
+\singlespacing
+
+% Para a criacao do glossario (ou lista de simbolos)
+\makeglossary
+
+% Lista de arquivos a serem processados. Estes comandos "includeonly" sao
+% dispensaveis e devem obrigatoriamente ser comentados na hora de gerar o
+% documento definitivo. Eles servem para compilar apenas parte do documento.
+% e util, durante a redacao, para que nao se tenha de compilar todo o
+% documento a cada vez que se faz uma alteracao. Por exemplo, se eu estou
+% fazendo alteracoes na dedicatoria e as outras partes nao tem interesse no
+% momento, posso incluir (descomentar) a linha "\includeonly{preambulo}"
+%\includeonly{rosto}
+%\includeonly{catalograficos}
+%\includeonly{preambulo}
+%\includeonly{resumos}
+%\includeonly{introducao/introducao}
+%\includeonly{estilo/estilo}
+%\includeonly{matematica/matematica}
+%\includeonly{figuras/figuras}
+%\includeonly{conclusao/conclusao}
+%\includeonly{apendice/apendice}
+
+% Inicia o texto
+\begin{document}
+
+% Paginas iniciais (sem numeracao)
+\pagestyle{empty}
+
+% Pgina de rosto (capa interna)
+%% \include{rosto}
+
+% Ficha catalografica: os dados catalograficos devem ser fornecidos
+% pela BCZM.
+% So sao incluidos na versao final da tese ou dissertacao. Nao sao
+% incluidos nem na proposta de tema de qualificacao nem na versao
+% preliminar da tese ou dissertacao: nestes casos, comente a proxima linha.
+%\include{catalograficos}
+
+% Assinaturas da banca, dedicatoria e agradecimentos
+% So sao incluidos na versao final da tese ou dissertacao. Nao sao
+% incluidos nem na proposta de tema de qualificacao nem na versao
+% preliminar da tese ou dissertacao: nestes casos, comente a proxima linha.
+%% \include{preambulo}
+
+%
+% O espaamento entre linhas
+%
+
+% PARA A VERSO FINAL:
+% Deve ser usado espaamento simples nas pginas de texto
+\singlespacing
+% PARA A QUALIFICAO E PARA A VERSO INICIAL:
+% Deve ser usado espaamento 1 1/2 nas pginas de texto
+%\onehalfspacing
+
+% Resumo/Abstract
+%% \include{resumos}
+
+% Paginas introdutrias (com numerao romana)
+\frontmatter
+
+% Lista de contedo (sumrio, gerado automaticamente)
+\addcontentsline{toc}{chapter}{Sumário}
+\tableofcontents
+
+% Lista de figuras (gerada automaticamente)
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de Figuras}
+\listoffigures
+
+% Lista de tabelas (gerada automaticamente)
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Lista de Tabelas}
+%\listoftables
+
+% Glossrio (gerado automaticamente - veja entradas em
+% introducao/introducao.tex e em estilo/estilo.tex)
+%\cleardoublepage
+%\renewcommand{\nomname}{Lista de Smbolos e Abreviaturas}
+%\markboth{\MakeUppercase{\nomname}}{\MakeUppercase{\nomname}}
+%\addcontentsline{toc}{chapter}{\nomname}
+% O argumento opcional do comando \printglossary  a largura deixada
+% para os smbolos no glossrio. Se seus smbolos so "largos", como
+% neste exemplo,   melhor por mais espao do que o 1cm que  reservado
+% por default
+% \printglossary[1.5cm]
+
+% Pginas do texto principal (com cabealho)
+\mainmatter
+\pagestyle{headings}
+
+% Para facilitar a organizao, foi criado um diretrio para cada
+% captulo do documento, pois assim os arquivos das figuras ficam
+% classificados por captulos
+
+%% \include{introducao/introducao}
+
+%% \include{arquitetura/arquitetura}
+
+%% \include{cores/cores}
+
+%% \include{calibracao/calibracao}
+
+%% \include{rotulo/rotulo}
+
+%% \include{implementacao/implementacao}
+
+%% \include{resultados/resultados}
+
+%% \include{conclusao/conclusao}
+
+% Referncias bibliogficas (geradas automaticamente)
+\addcontentsline{toc}{chapter}{Referncias bibliogrficas}
+\bibliography{bibliografia}
+
+%\appendix
+
+%Apndice A 
+% \include{apendice/apendice}
+
+\end{document}
