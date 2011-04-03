@@ -1,0 +1,78 @@
+%
+% ********** Página de Rosto
+%
+
+% titlepage gera páginas sem numeração
+\begin{titlepage}
+
+\begin{center}
+
+\small
+
+% O comando @{} no ambiente tabular x é para criar um novo delimitador
+% entre colunas que não a barra vertical | que é normalmente utilizada.
+% O delimitador desejado vai entre as chaves. No exemplo, não há nada,
+% de modo que o delimitador é vazio. Este recurso está sendo usado para
+% eliminar o espaço que geralmente existe entre as colunas
+% \begin{tabularx}{\linewidth}{@{}l@{}C@{}r@{}}
+% A figura foi colocada dentro de um parbox para que fique verticalmente
+% centralizada em relação ao resto da linha
+% \parbox[c]{3cm}{\includegraphics[width=\linewidth]{FARN}} &
+\begin{center}
+\textsf{\textsc{Faculdade Natalense para o Desenvolvimento do Rio Grande do Norte}}
+\end{center} % &
+%% \parbox[c]{2cm}{\includegraphics[width=\linewidth]{figuras/dca}}
+% \end{tabularx}
+
+% O vfill é um espação vertical que assume a máxima dimensão possível
+% Os vfill's desta página foram utilizados para que o texto ocupe
+% toda a folha
+\vfill
+
+\LARGE
+
+\textbf{Atualização de \textit{Web Services} em Tempo Real}
+
+\vfill
+
+\Large
+
+\textbf{Vinícius Brandão Mendes}
+
+\vfill
+
+\normalsize
+
+Orientador: Prof. Ricardo Wendel
+% Se não houver co-orientador, comente a próxima linha
+% \\[2ex] Co-orientador: Prof. Dr. Beltrano Catandura do Amaral
+
+\vfill
+
+\hfill
+\parbox{0.5\linewidth}{\textbf{%
+% Descomente as opçõs que se aplicam ao seu caso
+%Proposta de Tema para Qualificação}
+Relatório técnico}
+%Tese de Doutorado}
+apresentado ao Curso Especialização em Desenvolvimento
+de Sistemas Corporativos da FARN
+como trabalho de conclusão de curso.}
+%Doutor em Ciências.}
+
+\vfill
+
+\large
+
+% Este número de ordem deve ser obtido na coordenação do PPgEE
+% Corresponde ao número sequencial da sua tese ou dissertação:
+% por exemplo, a 25 tese de doutorado terá o número de ordem D25
+% Evidentemente, este dado não existe para propostas de tema, caso
+% em que a próxima linha deve ser comentada.
+%Número de ordem PPgEE: M000
+
+Natal, RN, abril de 2011
+
+\end{center}
+
+\end{titlepage}
