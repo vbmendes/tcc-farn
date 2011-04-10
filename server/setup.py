@@ -20,6 +20,7 @@ setup(
         'web.py',
         'mimerender',
         'cherrypy',
+        'suds',
     ],
 )
 
