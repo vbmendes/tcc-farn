@@ -17,13 +17,11 @@ Este trabalho trata de um cliente de \textit{Web Service} SOAP que deve obter o 
 
 O trabalho é baseado em um \textit{Web Service} SOAP, que é um protocolo para troca de informações estruturadas em uma plataforma descentralizada e distribuída.
 
-Um servidor é cliente dos dados de outro e precisa fornecer estes dados o mais rapidamente possível. Para não fornecer informação atrasada, ele precisa requisitar ao fornecedor de dados o mais frequentemente possível ao mesmo tempo que tem que manter um bom tempo de resposta para seus usuários.
-
-No problema serão abordadas técnicas de otimização de I/O e comunicação através de HTTP e SOAP.
+Um portal de internet precisa oferecer a seus usuários em tempo real dados que são obtidos através de um servidor que os fornece através de um \textit{web service}. Para não ter atraso na informação oferecida, ele precisa requisitar ao fornecedor de dados o mais frequentemente possível ao mesmo tempo que tem que manter um bom tempo de resposta para seus usuários.
 
 \section{Objetivo}
 
-O objetivo do trabalho é resolver os problemas relacionados à otimização do tempo de resposta e à frequência de atualização do dado. Por se tratar de um problema de otimização de tempo de resposta é necessário pensar no tempo de resposta de uma requisição HTTP e no overhead causado por ela e analisar a arquitetura de um processador para otimizar o processamento de tais requisições.
+O objetivo do trabalho é resolver os problemas relacionados à otimização do tempo de resposta e à frequência de atualização do dado. Por se tratar de um problema de otimização de tempo de resposta é necessário pensar na latência e no \textit{overhead} gerado por uma conexão HTTP e analisar a melhor arquitetura de sistema possível.
 
 \section{Motivação}
 
@@ -44,13 +42,13 @@ O projeto foi dividido em três partes:
 
 \subsection{Módulo para realizar comunicação utilizando SOAP}
 
-Foi necessário desenvolver um módulo capaz de fazer a comunicação utilizando SOAP, serví-los aos clientes e persistí-los em seu banco de dados.
+Foi necessário desenvolver um módulo capaz de fazer a comunicação utilizando o protocolo SOAP, serví-los aos clientes e persistí-los em seu banco de dados.
 
 \subsection{Estratégia de atualização de dados sob demanda}
 
-Uma das possíveis opções de atualização de dados é fazê-lo sob demanda. A medida em que um usuário solicita o dado, o portal requisita-o ao fornecedor e gera a resposta para o usuário. Esta foi a primeira estratégia analisada.
+Uma das possíveis opções de atualização de dados é fazê-lo sob demanda. A medida em que um usuário solicita o dado, o portal o requisita ao fornecedor e gera a resposta para o usuário. Esta foi a primeira estratégia analisada.
 
 \subsection{Atualizador de dados independente de este ser requisitado ou não}
 
-A atualização de dados sob demanda leva a um tempo de resposta muito alto para o usuário. Então foi analisada uma nova estratégia de atualizar os dados indepentementemente de eles terem sido requisitados pelos usuários ou não. Esta estratégia se mostrou mais interessante por reduzir o tempo de resposta para o usuário mas expôs bons desafios.
+A atualização de dados sob demanda leva a um tempo de resposta muito alto para o usuário. Então foi analisada uma nova estratégia de atualizar os dados indepentementemente de eles terem sido requisitados pelos usuários ou não. Esta estratégia se mostrou mais interessante por reduzir o tempo de resposta para o usuário.
 
