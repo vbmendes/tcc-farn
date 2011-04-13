@@ -3,7 +3,7 @@
 
 \textit{Web service} é uma interface acessível através da rede para uma funcionalidade de uma aplicação construída usando tecnologias definidas como padrão na Internet \cite{ref-oreilly-soap}. É apenas mais uma camada de troca de mensagens entre uma aplicação e outra. A principal vantagem no seu uso é prover comunicação entre diferentes aplicações independente da plataforma ou linguagem de programação utilizada por elas, o que garante interoperabilidade entre sistemas desde que ambos utilizem o mesmo protocolo de comunicação entre si.
 
-Através do uso de \textit{web services} é possível fazer com que uma aplicação faça chamadas de métodos remotos de outra aplicação. É simples como gerar uma requisição que encapsule qual método será chamado e quais os parâmetros e esperar uma resposta com o resultado da chamada do método. Para isso se faz necessário quebrar a camada de aplicação da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplicação, descoberta, descrição e empacotamento.
+Através do uso de \textit{web services} é possível fazer com que uma aplicação faça chamadas de métodos remotos de outra aplicação. É simples como gerar uma requisição HTTP que encapsule qual método será chamado e quais os parâmetros e esperar uma resposta com o resultado da chamada do método. Para isso se faz necessário quebrar a camada de aplicação da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplicação, descoberta, descrição e empacotamento.
 
 \section{Aplicação}
 
@@ -19,5 +19,9 @@ A descrição define como o \textit{web service} deve ser utilizado. Quais os m�
 
 \section{Empacotamento}
 
-Trata do empacotamento das mensagens de forma que ambas as partes sejam capazes de entendê-las. Existem vários formatos de empacotamento, em sua maioria baseados em XML, o qual possibilita a representação do significado do dado e por existirem \textit{parsers} XML para praticamente todas as linguagens e plataformas do mercado. Neste relatório iremos abordar o protocolo de empacotamento SOAP que foi utilizado na implementação do projeto.
+Trata do empacotamento das mensagens de forma que ambas as partes sejam capazes de entendê-las. Existem vários formatos de empacotamento, em sua maioria baseados em XML (\textit{Extensible Markup Language}), o qual possibilita a representação do significado do dado e por existirem \textit{parsers} XML para praticamente todas as linguagens e plataformas do mercado. Neste relatório iremos abordar o protocolo de empacotamento SOAP que foi utilizado na implementação do projeto.
+
+\subsection{SOAP}
+
+SOAP (\textit{Simple Object Access Protocol}) é um protocolo cujo objetivo é trocar informações estruturadas em um ambiente distribuído e descentralizado \cite{ref-soap-rfc}. É um padrão reconhecido e desenvolvido pelo World Wide Web Consortium (W3C) para desempenhar o papel da camada de empacotamento de um \textit{web service}. Sua especificação define um envelope baseado em XML para conter a informação a ser transmitida e uma série de regras para traduzir dados específicos de uma de plataforma e aplicação para representações XML.
 
