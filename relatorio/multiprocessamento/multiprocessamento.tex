@@ -1,5 +1,13 @@
-\mychapter{Multiprocessamento}
-\label{Cap:multiprocessamento}
+\mychapter{Computação Paralela}
+\label{Cap:computacao_paralela}
 
-Falar sobre programação concorrente com múltiplos processos.
+Computação paralela é uma forma de computação em que vários cálculos são realizados simultaneamente \cite{ref-computacao-paralela}. A maneira tradicional de executar software é a sequencial, o que faz com que um passo de execução só se inicie após a conclusão do passo anterior. Quando se tem apenas uma unidade de processamento esse código é ótimo na maioria dos casos. Já para múltiplas unidades de processamento, o que hoje já é realidade até mesmo em computadores pessoais, o processo sequêncial usaria apenas uma das unidades enquanto as outras ficariam ociosas. A situação se agrava ainda mais quando o processo precisa esperar alguma tarefa como entrada e saída de dados (I/O), pois nesse caso até mesmo a unidade de processamento onde ele está executando ficaria ociosa.
+
+A proposta da computação paralela é reduzir o tempo de resposta de um software através da divisão do processamento entre as unidades disponíveis. Em um problema baseado em I/O como a atualização de dados através de um \textit{web service} através de um web service ficam ainda mais claros os benefícios da computação paralela. 
+
+O procedimento de solicitar dados deve ser repetido diversas vezes alterando apenas o parâmetro de entrada. O processo de atualização faz chamadas de I/O ao \textit{web service} e fica ocioso esperando a resposta. Neste momento a unidade de processamento pode processar outra atualização que fará o mesmo procedimento. O que caracteriza um \textit{pool} de processos coordenados por um processo pai que apenas atribui parâmetros de entrada a cada processo.
+
+\section{\textit{Pool} de processos}
+
+Um \textit{pool} de processos é um grupo de processos à disposição de um pai para executar tarefas semelhantes. Geralmente o pai tem um conjunto de parâmetros de entrada e os distribui para cada processo do pool, o qual assim que finalizar seu processamento, informa o pai, que se ainda não tiver endereçado todos os parâmetros de entrada, solicita que mais um seja processado.
 
