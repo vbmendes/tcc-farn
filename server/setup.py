@@ -21,6 +21,7 @@ setup(
         'mimerender',
         'cherrypy',
         'suds',
+        'sqlalchemy',
     ],
 )
 
