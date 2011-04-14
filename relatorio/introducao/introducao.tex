@@ -31,24 +31,29 @@ Dado que no mundo jornalístico a agilidade na entrega de informações é um fa
 
 \section{Metodologia}
 
-O projeto foi dividido em três partes: 
+O projeto foi dividido em cinco partes: 
 
 \begin{itemize}
-\item módulo para realizar comunicação utilizando SOAP;
-\item estratégia de atualização de dados sob demanda;
-\item atualizador de dados independente de este ser requisitado ou não.
+\item estudo sobre \textit{web services} e o protocolo SOAP;
+\item estudo sobre computação paralela;
+\item implementação de cliente para \textit{web services} SOAP;
+\item implementação de estratégias de utilização do cliente.
 \end{itemize}
 
 
-\subsection{Módulo para realizar comunicação utilizando SOAP}
+\subsection{Estudo sobre \textit{web services} e o protocolo SOAP}
 
-Foi necessário desenvolver um módulo capaz de fazer a comunicação utilizando o protocolo SOAP, serví-los aos clientes e persistí-los em seu banco de dados.
+Por se tratar de atualização de \textit{web services} se faz necessário um estudo sobre os conceitos desta tecnologia.
 
-\subsection{Estratégia de atualização de dados sob demanda}
+\subsection{Estudo sobre computação paralela}
 
-Uma das possíveis opções de atualização de dados é fazê-lo sob demanda. A medida em que um usuário solicita o dado, o portal o requisita ao fornecedor e gera a resposta para o usuário. Esta foi a primeira estratégia analisada.
+O projeto tem como pré-requisito oferecer um baixo tempo de resposta. A computação paralela é um paradigma muito interessante para otimizar tarefas computacionais e explorar a máquina o máximo possível.
 
-\subsection{Atualizador de dados independente de este ser requisitado ou não}
+\subsection{Implementação de cliente para \textit{web service} SOAP}
 
-Foi analisada uma estratégia de atualizar os dados indepentementemente de eles terem sido requisitados pelos usuários ou não. Esta estratégia se mostra interessante por reduzir o tempo de resposta para o usuário.
+Depois de feito o estudo, foi colocado em prática os conhecimentos a fim de implementar uma solução que possibilitasse o acesso a \textit{web services} que utilizem o protocolo SOAP.
+
+\subsection{Implementação de estratégias para utilização do cliente}
+
+Com uma forma de acessar os dados, foram elaboradas duas estratégias para otimizar o tempo de resposta ao usuário final e garantir a recência dos dados apresentados.
 
