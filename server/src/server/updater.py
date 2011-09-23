@@ -12,6 +12,7 @@ session = Session()
 def mymethod(currency):
     c = Currency(code=currency, rate=CurrencyClient().get_rate(currency))
     session.add(c)
+    print session.query(Currency).filter_by(code=currency).first().rate
     print '%s OK!' % currency
 
 if __name__ == '__main__':
@@ -21,4 +22,3 @@ if __name__ == '__main__':
         currencies = currencies[:int(argv[2])]
     p.map(mymethod, currencies)
     print datetime.datetime.now() - inicio
-
