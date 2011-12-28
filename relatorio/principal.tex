@@ -1,96 +1,96 @@
 %%
 %% Arquivo principal para:
 %% - teses de doutorado
-%% - dissertaÃ§Ãµes de mestrado
+%% - dissertações de mestrado
 %% - exames de qualificao de mestrado e doutorado
 %%
-%% NOTA: A PUBLICAÃ‡ÃƒO DESTE MODELO VISA APENAS ORIENTAR OS PÃ“S-GRADUANDOS
-%% NA PREPARAÃ‡ÃƒO DE SEUS TEXTOS. O PPgEE DA UFRN NÃƒO PROVÃŠ ASSISTÃŠNCIA NO
-%% USO DAS FERRAMENTAS NECESSÃRIAS AO USO DESTE MODELO (LATEX, XFIG, ETC.)
+%% NOTA: A PUBLICAÇÃO DESTE MODELO VISA APENAS ORIENTAR OS PÓS-GRADUANDOS
+%% NA PREPARAÇÃO DE SEUS TEXTOS. O PPgEE DA UFRN NÃO PROVÊ ASSISTÊNCIA NO
+%% USO DAS FERRAMENTAS NECESSÁRIAS AO USO DESTE MODELO (LATEX, XFIG, ETC.)
 %%
 %% Adelardo Medeiros, dezembro de 2005.
-
-% DEFINIÃ‡Ã•ES GLOBAIS
-
-% Esta primeira linha dÃ¡ informaÃ§Ãµes gerais sobre o documento.
-% PARA A VERSÃƒO FINAL:
-% papel A4, letra grande (12pt), openright (capÃ­tulos sÃ³ iniciam em
-% pÃ¡gina direita, se necessÃ¡rio incluindo uma pgina em branco),
+%
+% DEFINIÇÕES GLOBAIS
+%
+% Esta primeira linha dá informações gerais sobre o documento.
+% PARA A VERSÃO FINAL:
+% papel A4, letra grande (12pt), openright (capítulos só iniciam em
+% página direita, se necessário incluindo uma pgina em branco),
 % twoside (o documento vai ser impresso em frente e costa)
 \documentclass[a4paper,12pt,openright,twoside]{book}
-% PARA A QUALIFICAÃ‡ÃƒO E PARA A VERSÃƒO INICIAL:
-% papel A4, letra grande (12pt), openany (capÃ­tulos iniciam em
-% qualquer pÃ¡gina), oneside (o documento vai ser impresso sÃ³ na frente)
+% PARA A QUALIFICAÇÃO E PARA A VERSÃO INICIAL:
+% papel A4, letra grande (12pt), openany (capítulos iniciam em
+% qualquer página), oneside (o documento vai ser impresso só na frente)
 %\documentclass[a4paper,12pt,openany,oneside]{book}
-
-% PACOTES OBRIGATÃ“RIOS
-
+%
+% PACOTES OBRIGATÓRIOS
+%
 % Use estes pacotes para poder digitar diretamente as letras com acento
-% e para que a hifenizaÃ§Ã£o funcione corretamente
-\usepackage[utf8]{inputenc}
+% e para que a hifenização funcione corretamente
+\usepackage[latin1]{inputenc}
 \usepackage{ae}
-% Para usar fontes standard ao invÃ©s das do LaTeX (gera melhores PDFs)
+% Para usar fontes standard ao invés das do LaTeX (gera melhores PDFs)
 \usepackage{pslatex}
-% Para a hifenizaÃ§Ã£o em portuguÃªs
+% Para a hifenização em português
 \usepackage[portuges, brazil]{babel}
-% Para que os primeiros parÃ¡grafos das seÃ§Ãµes tambÃ©m sejam indentados
+% Para que os primeiros parágrafos das seções também sejam indentados
 \usepackage{indentfirst}
-% Para poder incluir grÃ¡ficos (figuras)
+% Para poder incluir gráficos (figuras)
 \usepackage{graphicx}
-% Para poder fazer glossÃ¡rio ou lista de sÃ­mbolos
-% Use a segunda opÃ§Ã£o se quiser incluir na definiÃ§Ã£o do sÃ­mbolo a
-% pÃ¡gina e/ou a equaÃ§Ã£o onde ela foi definida
+% Para poder fazer glossário ou lista de símbolos
+% Use a segunda opção se quiser incluir na definição do símbolo a
+% página e/ou a equação onde ela foi definida
 % \usepackage[portuguese,noprefix]{nomencl}
 %\usepackage[portuguese,noprefix,refeq,refpage]{nomencl}
-% Para permitir espaÃ§amento simples, 1 1/2 e duplo
+% Para permitir espaçamento simples, 1 1/2 e duplo
 \usepackage{setspace}
-% Para usar alguns comandos matemÃ¡ticos avanÃ§ados muito Ãºteis
+% Para usar alguns comandos matemáticos avançados muito úteis
 \usepackage{amsmath}
 % Para poder usar o ambiente "comment"
 \usepackage{verbatim}
-% Para poder ter tabelas com colunas de largura auto-ajustÃ¡vel
+% Para poder ter tabelas com colunas de largura auto-ajustável
 \usepackage{tabularx}
-% Para executar um comando depois do fim da pÃ¡gina corrente
+% Para executar um comando depois do fim da página corrente
 \usepackage{afterpage}
-% Para formatar URLs (endereÃ§os da Web)
+% Para formatar URLs (endereços da Web)
 \usepackage{url}
-% Para reduzir os espaÃ§os entre os Ã­tens (itemize, enumerate, etc.)
-% Este pacote nÃ£o faz parte da distribuiÃ§Ã£o padrÃ£o do LaTeX.
+% Para reduzir os espaços entre os ítens (itemize, enumerate, etc.)
+% Este pacote não faz parte da distribuição padrão do LaTeX.
 \usepackage{noitemsep}
-% Para as citaÃ§Ãµes bibliogrÃ¡ficas
-\usepackage[abbr]{harvard}	% As chamadas sÃ£o sempre abreviadas
+% Para as citações bibliográficas
+\usepackage[abbr]{harvard}	% As chamadas são sempre abreviadas
 \harvardparenthesis{square}	% Colchetes nas chamadas
-\harvardyearparenthesis{round}	% ParÃªntesis nos anos das referÃªncias
-%\renewcommand{\harvardand}{e}	% Substituir "&" por "e" nas referÃªncias
-
+\harvardyearparenthesis{round}	% Parêntesis nos anos das referências
+%\renewcommand{\harvardand}{e}	% Substituir "&" por "e" nas referências
+%
 % PACOTES OPCIONAIS
-
+%
 % Para poder incluir arquivos Postscript com cores (do Xfig, por exemplo)
 \usepackage{color}
-% Para ter cÃ©lulas em tabelas que ocupam mais de uma linha
+% Para ter células em tabelas que ocupam mais de uma linha
 \usepackage{multirow}
-% Para poder ter tabelas longas em mais de uma pÃ¡gina
+% Para poder ter tabelas longas em mais de uma página
 %\usepackage{longtable}
 % Para poder escrever partes do texto em "n" colunas
 %\usepackage{multicol}
-% Se vocÃª quiser personalizar os cabeÃ§alhos das pÃ¡ginas
+% Se você quiser personalizar os cabeçalhos das páginas
 %\usepackage{fancyheadings}
-% Para incluir algoritmos e listagens de cÃ³digos
+% Para incluir algoritmos e listagens de códigos
 %\usepackage{listings}
-% CapÃ­tulos com tÃ­tulos em um formato "decorado"
+% Capítulos com títulos em um formato "decorado"
 \usepackage{capitulos}
-
-% As definiÃ§Ãµoes dos novos comandos estÃ£o agrupadas no arquivo "comandos.tex"
-% Esta separaÃ§Ã£o Ã© opcional: se vocÃª preferir, pode por as definicoes
+%
+% As definiçõoes dos novos comandos estão agrupadas no arquivo "comandos.tex"
+% Esta separação é opcional: se você preferir, pode por as definicoes
 % diretamente neste arquivo
 \input{comandos.tex}
-
+%
 %
 % As margens
 %
-
+%
 % Direcao horizontal
-
+%
 % Margem interna
 % Nas paginas impares
 \setlength{\oddsidemargin}{3.5cm}         % Margem real desejada
@@ -108,9 +108,9 @@
 % Note que a margem direita nao e fixada diretamente:
 % ela e obtida subtraindo-se os outros valores da largura da pagina.
 % 3.5+15+x=21cm (largura A4) -> x = margem externa = 2.5cm
-
+%
 % Direcao vertical
-
+%
 % Margem superior (entre o topo da folha e o cabecalho), altura do
 % cabecalho e distancia entre o fim do cabecalho e o inicio do texto
 \setlength{\topmargin}{2.0cm}             % Margem real desejada
@@ -130,23 +130,23 @@
 % ela e obtida subtraindo-se os outros valores, sem incluir o
 % "footskip", da altura da pagina.
 % 2.0+1.0+1.0+22.7+x=29.7cm (altura A4) -> x = margem inferior = 3cm
-
+%
 %
 % O estilo das referencias bibliograficas
 %
-
+%
 \bibliographystyle{ppgee}
-
+%
 %
 % O espacamento entre linhas
 %
-
+%
 % As paginas iniciais sao sempre em espacamento simples
 \singlespacing
-
+%
 % Para a criacao do glossario (ou lista de simbolos)
 \makeglossary
-
+%
 % Lista de arquivos a serem processados. Estes comandos "includeonly" sao
 % dispensaveis e devem obrigatoriamente ser comentados na hora de gerar o
 % documento definitivo. Eles servem para compilar apenas parte do documento.
@@ -164,60 +164,60 @@
 %\includeonly{figuras/figuras}
 %\includeonly{conclusao/conclusao}
 %\includeonly{apendice/apendice}
-
+%
 % Inicia o texto
 \begin{document}
-
+%
 % Paginas iniciais (sem numeracao)
 \pagestyle{empty}
-
+%
 % Pgina de rosto (capa interna)
 \include{rosto}
-
+%
 % Ficha catalografica: os dados catalograficos devem ser fornecidos
 % pela BCZM.
 % So sao incluidos na versao final da tese ou dissertacao. Nao sao
 % incluidos nem na proposta de tema de qualificacao nem na versao
 % preliminar da tese ou dissertacao: nestes casos, comente a proxima linha.
 %\include{catalograficos}
-
+%
 % Assinaturas da banca, dedicatoria e agradecimentos
 % So sao incluidos na versao final da tese ou dissertacao. Nao sao
 % incluidos nem na proposta de tema de qualificacao nem na versao
 % preliminar da tese ou dissertacao: nestes casos, comente a proxima linha.
 \include{preambulo}
-
+%
 %
 % O espaamento entre linhas
 %
-
+%
 % PARA A VERSO FINAL:
 % Deve ser usado espaamento simples nas pginas de texto
 \singlespacing
 % PARA A QUALIFICAO E PARA A VERSO INICIAL:
 % Deve ser usado espaamento 1 1/2 nas pginas de texto
 %\onehalfspacing
-
+%
 % Resumo/Abstract
 \include{resumos}
-
+%
 % Paginas introdutrias (com numerao romana)
 \frontmatter
-
+%
 % Lista de contedo (sumrio, gerado automaticamente)
-\addcontentsline{toc}{chapter}{SumÃ¡rio}
+\addcontentsline{toc}{chapter}{Sumário}
 \tableofcontents
-
+%
 % Lista de figuras (gerada automaticamente)
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Lista de Figuras}
 \listoffigures
-
+%
 % Lista de tabelas (gerada automaticamente)
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Lista de Tabelas}
 %\listoftables
-
+%
 % Glossrio (gerado automaticamente - veja entradas em
 % introducao/introducao.tex e em estilo/estilo.tex)
 %\cleardoublepage
@@ -229,34 +229,34 @@
 % neste exemplo,   melhor por mais espao do que o 1cm que  reservado
 % por default
 % \printglossary[1.5cm]
-
+%
 % Pginas do texto principal (com cabealho)
 \mainmatter
 \pagestyle{headings}
-
+%
 % Para facilitar a organizao, foi criado um diretrio para cada
 % captulo do documento, pois assim os arquivos das figuras ficam
 % classificados por captulos
-
+%
 \include{introducao/introducao}
-
+%
 \include{web_services/web_services}
-
+%
 \include{multiprocessamento/multiprocessamento}
-
+%
 \include{implementacao/implementacao}
-
+%
 \include{resultados/resultados}
-
+%
 \include{conclusao/conclusao}
-
+%
 % Referncias bibliogficas (geradas automaticamente)
-\addcontentsline{toc}{chapter}{ReferÃªncias bibliogrÃ¡ficas}
+\addcontentsline{toc}{chapter}{Referências}
 \bibliography{bibliografia}
-
+%
 %\appendix
-
+%
 %Apndice A 
 % \include{apendice/apendice}
-
+%
 \end{document}

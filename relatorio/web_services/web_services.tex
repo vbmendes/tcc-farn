@@ -1,27 +1,40 @@
 \mychapter{\textit{Web Services}}
 \label{Cap:web_services}
 
-\textit{Web service} √© uma interface acess√≠vel atrav√©s da rede para uma funcionalidade de uma aplica√ß√£o constru√≠da usando tecnologias definidas como padr√£o na Internet \cite{ref-oreilly-soap}. √â apenas mais uma camada de troca de mensagens entre uma aplica√ß√£o e outra. A principal vantagem no seu uso √© prover comunica√ß√£o entre diferentes aplica√ß√µes independente da plataforma ou linguagem de programa√ß√£o utilizada por elas, o que garante interoperabilidade entre sistemas desde que ambos utilizem o mesmo protocolo de comunica√ß√£o entre si.
+\textit{Web service} È uma interface acessÌvel atravÈs da rede para uma funcionalidade de uma aplicaÁ„o construÌda usando tecnologias definidas como padr„o na Internet \cite{ref-oreilly-soap}. … apenas mais uma camada de troca de mensagens entre uma aplicaÁ„o e outra. A principal vantagem no seu uso È prover comunicaÁ„o entre diferentes aplicaÁıes independente da plataforma ou linguagem de programaÁ„o utilizada por elas, o que garante interoperabilidade entre sistemas desde que ambos utilizem o mesmo protocolo de comunicaÁ„o entre si.
 
-Atrav√©s do uso de \textit{web services} √© poss√≠vel fazer com que uma aplica√ß√£o fa√ßa chamadas de m√©todos remotos de outra aplica√ß√£o. √â simples como gerar uma requisi√ß√£o HTTP que encapsule qual m√©todo ser√° chamado e quais os par√¢metros e esperar uma resposta com o resultado da chamada do m√©todo. Para isso se faz necess√°rio quebrar a camada de aplica√ß√£o da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplica√ß√£o, descoberta, descri√ß√£o e empacotamento.
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.7\linewidth]{img/web_services}}
+\caption{\textit{Web services} poder servir a diferentes plataformas}
+\label{Fig:web_services}
+\end{center} \end{figure}
 
-\section{Aplica√ß√£o}
+AtravÈs do uso de \textit{web services} È possÌvel fazer com que uma aplicaÁ„o faÁa chamadas de mÈtodos remotos de outra aplicaÁ„o. … simples como gerar uma requisiÁ„o HTTP que encapsule qual mÈtodo ser· chamado e quais os par‚metros e esperar uma resposta com o resultado da chamada do mÈtodo. Para isso se faz necess·rio quebrar a camada de aplicaÁ„o da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplicaÁ„o, descoberta, descriÁ„o e empacotamento.
 
-A camada de aplica√ß√£o √© o c√≥digo que precisar√° se comunicar com a outra aplica√ß√£o atrav√©s do \textit{web service}, que pode ser escrito em qualquer linguagem.
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.6\linewidth]{img/camadas_web_services}}
+\caption{Camadas de um \textit{web service}}
+\label{Fig:camadas_web_services}
+\end{center} \end{figure}
+
+\section{AplicaÁ„o}
+
+A camada de aplicaÁ„o È o cÛdigo que precisar· se comunicar com a outra aplicaÁ„o atravÈs do \textit{web service}, que pode ser escrito em qualquer linguagem.
 
 \section{Descoberta}
 
-Esta camada √© respons√°vel por disponibilizar metadados sobre \textit{web services} de modo a facilitar a busca pela aplica√ß√£o necess√°ria para cada projeto.
+Esta camada È respons·vel por disponibilizar metadados sobre \textit{web services} de modo a facilitar a busca pela aplicaÁ„o necess·ria para cada projeto.
 
-\section{Descri√ß√£o}
+\section{DescriÁ„o}
 
-A descri√ß√£o define como o \textit{web service} deve ser utilizado. Quais os m√©todos que ele exp√µe, quais os par√¢metros necess√°rios em cada um deles e quais as poss√≠veis respostas. O \textit{Web Service Description Language} (WSDL) √© um padr√£o muito utilizado para descrever um \textit{web service} atrav√©s do uso de XML.
+A descriÁ„o define como o \textit{web service} deve ser utilizado. Quais os mÈtodos que ele expıe, quais os par‚metros necess·rios em cada um deles e quais as possÌveis respostas. O \textit{Web Service Description Language} (WSDL) È um padr„o muito utilizado para descrever um \textit{web service} atravÈs do uso de XML.
 
 \section{Empacotamento}
 
-Trata do empacotamento das mensagens de forma que ambas as partes sejam capazes de entend√™-las. Existem v√°rios formatos de empacotamento, em sua maioria baseados em XML (\textit{Extensible Markup Language}), o qual possibilita a representa√ß√£o do significado do dado e por existirem \textit{parsers} XML para praticamente todas as linguagens e plataformas do mercado. Neste relat√≥rio iremos abordar o protocolo de empacotamento SOAP que foi utilizado na implementa√ß√£o do projeto.
+Trata do empacotamento das mensagens de forma que ambas as partes sejam capazes de entendÍ-las. Existem v·rios formatos de empacotamento, em sua maioria baseados em XML (\textit{Extensible Markup Language}), por possibilitar a representaÁ„o do significado do dado e existirem \textit{parsers} XML para praticamente todas as linguagens e plataformas do mercado. Neste relatÛrio iremos abordar o protocolo de empacotamento SOAP que foi utilizado na implementaÁ„o do projeto.
 
 \subsection{SOAP}
 
-SOAP (\textit{Simple Object Access Protocol}) √© um protocolo cujo objetivo √© trocar informa√ß√µes estruturadas em um ambiente distribu√≠do e descentralizado \cite{ref-soap-rfc}. √â um padr√£o reconhecido e desenvolvido pelo World Wide Web Consortium (W3C) para desempenhar o papel da camada de empacotamento de um \textit{web service}. Sua especifica√ß√£o define um envelope baseado em XML para conter a informa√ß√£o a ser transmitida e uma s√©rie de regras para traduzir dados espec√≠ficos de uma de plataforma e aplica√ß√£o para representa√ß√µes XML.
-
+SOAP (\textit{Simple Object Access Protocol}) È um protocolo cujo objetivo È trocar informaÁıes estruturadas em um ambiente distribuÌdo e descentralizado \cite{ref-soap-rfc}. … um padr„o reconhecido e desenvolvido pelo World Wide Web Consortium (W3C) para desempenhar o papel da camada de empacotamento de um \textit{web service}. Sua especificaÁ„o define um envelope baseado em XML para conter a informaÁ„o a ser transmitida e uma sÈrie de regras para traduzir dados especÌficos de uma de plataforma e aplicaÁ„o para representaÁıes XML.

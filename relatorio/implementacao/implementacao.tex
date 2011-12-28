@@ -1,26 +1,53 @@
-\mychapter{ImplementaÃ§Ã£o}
+\mychapter{Implementação}
 \label{Cap:implementacao}
 
-A implementaÃ§Ã£o foi feita utilizando a linguagem de programaÃ§Ã£o Python. Foi escolhido um cliente para o protocolo SOAP e encontrada uma API que disponibiliza cotaÃ§Ãµes de moedas atravÃ©s de um \textit{web service} que utiliza este protocolo.
+A implementação foi feita utilizando a linguagem de programação Python. Foi escolhido um cliente para o protocolo SOAP e encontrada uma API que disponibiliza cotações de moedas através de um \textit{web service} que utiliza este protocolo.
 
 \section{Por que Python?}
 
-Python Ã© uma linguagem interpretada, dinÃ¢mica e fortemente tipada. Por ter estas caracterÃ­sticas torna o trabalho mais rÃ¡pido e diminui o tempo de desenvolvimento do projeto, que no caso Ã© apenas uma prova de conceito, portanto o tempo curto de desenvolvimento Ã© bastante interessante. Isso nÃ£o significa que Python seja uma linguagem apropriada apenas para provas de conceito, visto que grandes empresas adotam esta teconologia em seus projetos que estÃ£o hoje em produÃ§Ã£o.
+Python é uma linguagem interpretada, dinâmica e fortemente tipada. Por ter estas características torna o trabalho mais rápido e diminui o tempo de desenvolvimento do projeto, que no caso é apenas uma prova de conceito, portanto o tempo curto de desenvolvimento é bastante interessante. Isso não significa que Python seja uma linguagem apropriada apenas para provas de conceito, visto que grandes empresas adotam esta tecnologia em seus projetos que estão hoje em produção.
 
 \section{Cliente SOAP}
 
-\section{EstratÃ©gias de utilizaÃ§Ã£o do cliente}
+Para obtenção das cotações do \textit{web service} foi utilizada a biblioteca Suds \cite{ref-suds} para fazer a interface entre o código Python e a API externa. A biblioteca reconhece o WSDL e gera classes Python para acesso remoto ao \textit{web service}.
 
-Foram desenvolvidas duas implementaÃ§Ãµes para o problema com o objetivo de encontrar a mais performÃ¡tica:
+\subsection{API que disponibiliza cotações}
+
+A API disponibiliza um único método para obtenção da cotação de uma moeda em relação a uma outra. Para simplificar a implementação, as cotações foram todas normalizadas para sempre serem em relação ao Dólar Americano.
+
+\section{Estratégias de utilização do cliente}
+
+Foram desenvolvidas duas implementações para o problema com o objetivo de encontrar a mais performática:
 
 \begin{itemize}
-\item atualizaÃ§Ã£o de dados sob demanda;
+\item atualização de dados sob demanda;
 \item atualizador de dados independente de demanda.
 \end{itemize}
 
-\subsection{RequisiÃ§Ãµes sob demanda}
+\subsection{Atualização de dados sob demanda}
 
+Um das implementações testadas foi conectar à API para obter uma cotação apenas quando o usuário requisitasse. Isso evita a atualização de cotações que não estão sendo requisitadas por usuário nenhum. Em contrapartida, o tempo de resposta ao usuário será alto, visto que será acrescido ao tempo de processamento, o tempo da requisição à fonte de dados, que é através da internet e, portanto, lenta.
 
+Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e será processada pelo mesmo processo utilizado para receber e responder a requisição do usuário, o que faz com que processos que deveriam responder usuários fiquem ocupados com requisições a fontes de dados externas, diminuindo o número de usuários atendidos por segundo.
 
-\subsection{Atualizar todos os dados de tempos em tempos}
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.95\linewidth]{img/requisicoes_sob_demanda}}
+\caption{Arquitetura da solução com atualização de dados sob demanda.}
+\label{Fig:atualizacao_sob_demanda}
+\end{center} \end{figure}
 
+\subsection{Atualizador de dados independente de demanda}
+
+A segunda implementação testada foi desenvolver um sistemas cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa.
+
+Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados.
+
+Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Issoo pode gerar desperdício de poder computacional.
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.95\linewidth]{img/atualizador}}
+\caption{Arquitetura da solução com atualizador de dados independente de demanda.}
+\label{Fig:atualizador}
+\end{center} \end{figure}

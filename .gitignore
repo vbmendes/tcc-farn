@@ -17,3 +17,6 @@ server/parts
 *.toc
 *~
 *.db
+.DS_Store
+*.texshop
+*.synctex.gz

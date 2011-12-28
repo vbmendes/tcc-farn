@@ -5,55 +5,62 @@
 % Est sendo usando o comando \mychapter, que foi definido no arquivo
 % comandos.tex. Este comando \mychapter  essencialmente o mesmo que o
 % comando \chapter, com a diferena que acrescenta um \thispagestyle{empty}
-% aps o \chapter. Isto √© necess√°rio para corrigir um erro de LaTeX, que
-% coloca um n√∫mero de pgina no rodap√© de todas as p√°ginas iniciais dos
-% cap√≠tulos, mesmo quando o estilo de numera√ß√£o escolhido √© outro.
-\mychapter{Introdu√ß√£o}
+% aps o \chapter. Isto È necess·rio para corrigir um erro de LaTeX, que
+% coloca um n˙mero de pgina no rodapÈ de todas as p·ginas iniciais dos
+% capÌtulos, mesmo quando o estilo de numeraÁ„o escolhido È outro.
+\mychapter{IntroduÁ„o}
 \label{Cap:introducao}
 
-Este trabalho trata de um cliente de \textit{Web Service} SOAP que deve obter o mais rapidamente poss√≠vel uma grande quantidade de dados do servidor e persist√≠-los em seu banco de dados. Existem in√∫meras formas de resolver esse problema. Neste trabalho ser√£o abordadas algumas t√©cnicas poss√≠veis.
+Este trabalho trata de um serviÁo que deve servir seus usu·rios os mais rapidamente com cotaÁıes geradas por uma fonte de dados externa, que as fornece atravÈs de um \textit{Web service} SOAP. Existem in˙meras formas de resolver esse problema. Neste trabalho ser„o abordadas algumas tÈcnicas possÌveis.
 
-\section{Descri√ß√£o geral}
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.95\linewidth]{img/introducao}}
+\caption{Arquitetura b·sica do problema em quest„o}
+\label{Fig:introducao}
+\end{center} \end{figure}
 
-O trabalho √© baseado em um \textit{Web Service} SOAP, que √© um protocolo para troca de informa√ß√µes estruturadas em uma plataforma descentralizada e distribu√≠da.
+\section{DescriÁ„o geral}
 
-Um portal de internet precisa oferecer a seus usu√°rios em tempo real dados que s√£o obtidos atrav√©s de um servidor que os fornece atrav√©s de um \textit{web service}. Para n√£o ter atraso na informa√ß√£o oferecida, ele precisa requisitar ao fornecedor de dados o mais frequentemente poss√≠vel ao mesmo tempo que tem que manter um bom tempo de resposta para seus usu√°rios.
+O trabalho È baseado em um \textit{Web Service} SOAP, que È um protocolo para troca de informaÁıes estruturadas em uma plataforma descentralizada e distribuÌda.
+
+Um portal de internet precisa oferecer a seus usu·rios em tempo real dados de um fornecedor que os disponibiliza atravÈs de um \textit{web service}. Para n„o ter atraso na informaÁ„o oferecida, ele precisa requisitar ao fornecedor de dados o mais frequentemente possÌvel ao mesmo tempo que tem que manter um bom tempo de resposta para seus usu·rios.
 
 \section{Objetivo}
 
-O objetivo do trabalho √© resolver os problemas relacionados √† otimiza√ß√£o do tempo de resposta e √† frequ√™ncia de atualiza√ß√£o do dado. Por se tratar de um problema de otimiza√ß√£o de tempo de resposta √© necess√°rio pensar na lat√™ncia e no \textit{overhead} gerado por uma conex√£o HTTP e analisar a melhor arquitetura de sistema poss√≠vel.
+O objetivo do trabalho È resolver os problemas relacionados ‡ otimizaÁ„o do tempo de resposta e ‡ frequÍncia de atualizaÁ„o do dado. Por se tratar de um problema de otimizaÁ„o de tempo de resposta È necess·rio pensar na latÍncia e no \textit{overhead} gerado por uma conex„o HTTP e analisar a melhor arquitetura de sistema possÌvel.
 
-\section{Motiva√ß√£o}
+\section{MotivaÁ„o}
 
-Com o avan√ßo da inform√°tica e de conceitos como a computa√ß√£o em nuvem, cada vez mais os servidores est√£o em constante comunica√ß√£o ao redor do mundo. Seja para autenticar usu√°rios, seja para persistir dados ou seja para solicitar dados. Um portal de not√≠cias, por exemplo, exibe, al√©m das not√≠cias, dados meteorol√≥gicos e econ√¥micos. Esses dados normalmente n√£o s√£o produzidos pelo pr√≥prio portal e ent√£o s√£o necess√°rias parcerias com fornecedores de conte√∫do que disponham de tal informa√ß√£o. Estes fornecedores, em geral, disponibilizam os dados atrav√©s de um \textit{Web Service}.
+Com o avanÁo da inform·tica e de conceitos como a computaÁ„o em nuvem, cada vez mais os servidores est„o em constante comunicaÁ„o ao redor do mundo. Seja para autenticar usu·rios, seja para persistir dados ou seja para solicitar dados. Um portal de notÌcias, por exemplo, exibe, alÈm das notÌcias, dados meteorolÛgicos e econÙmicos. Esses dados normalmente n„o s„o produzidos pelo prÛprio portal, portanto s„o necess·rias parcerias com fornecedores de conte˙do que disponham de tal informaÁ„o. Estes fornecedores, em geral, disponibilizam os dados atravÈs de \textit{Web Services}.
 
-Dado que no mundo jornal√≠stico a agilidade na entrega de informa√ß√µes √© um fator primordial para o sucesso, surge a necessidade de otimizar o tempo de consumo de tais fornecedores a fim de entregar aos usu√°rios a informa√ß√£o mais recente poss√≠vel.
+Dado que no mundo jornalÌstico a agilidade na entrega de informaÁıes È um fator primordial para o sucesso, surge a necessidade de otimizar o tempo de consumo de tais fornecedores a fim de entregar aos usu·rios a informaÁ„o mais recente possÌvel.
 
 \section{Metodologia}
 
-O projeto foi dividido em cinco partes: 
+O projeto foi dividido em quatro partes: 
 
 \begin{itemize}
 \item estudo sobre \textit{web services} e o protocolo SOAP;
-\item estudo sobre computa√ß√£o paralela;
-\item implementa√ß√£o de cliente para \textit{web services} SOAP;
-\item implementa√ß√£o de estrat√©gias de utiliza√ß√£o do cliente.
+\item estudo sobre computaÁ„o paralela;
+\item implementaÁ„o de cliente para \textit{web services} SOAP;
+\item implementaÁ„o de estratÈgias de utilizaÁ„o do cliente.
 \end{itemize}
 
 
 \subsection{Estudo sobre \textit{web services} e o protocolo SOAP}
 
-Por se tratar de atualiza√ß√£o de \textit{web services} se faz necess√°rio um estudo sobre os conceitos desta tecnologia.
+Por se tratar de atualizaÁ„o de \textit{web services} foi necess·rio um estudo sobre os conceitos desta tecnologia.
 
-\subsection{Estudo sobre computa√ß√£o paralela}
+\subsection{Estudo sobre computaÁ„o paralela}
 
-O projeto tem como pr√©-requisito oferecer um baixo tempo de resposta. A computa√ß√£o paralela √© um paradigma muito interessante para otimizar tarefas computacionais e explorar a m√°quina o m√°ximo poss√≠vel.
+O projeto tem como prÈ-requisito oferecer um baixo tempo de resposta. A computaÁ„o paralela È um paradigma interessante para otimizar tarefas computacionais e explorar a m·quina o m·ximo possÌvel.
 
-\subsection{Implementa√ß√£o de cliente para \textit{web service} SOAP}
+\subsection{ImplementaÁ„o de cliente para \textit{web service} SOAP}
 
-Depois de feito o estudo, foi colocado em pr√°tica os conhecimentos a fim de implementar uma solu√ß√£o que possibilitasse o acesso a \textit{web services} que utilizem o protocolo SOAP.
+Feito o estudo, foram colocados em pr·tica os conhecimentos a fim de implementar uma soluÁ„o que possibilitasse o acesso a \textit{web services} que utilizem o protocolo SOAP.
 
-\subsection{Implementa√ß√£o de estrat√©gias para utiliza√ß√£o do cliente}
+\subsection{ImplementaÁ„o de estratÈgias para utilizaÁ„o do cliente}
 
-Com uma forma de acessar os dados, foram elaboradas duas estrat√©gias para otimizar o tempo de resposta ao usu√°rio final e garantir a rec√™ncia dos dados apresentados.
+Com uma forma de acessar os dados, foram elaboradas duas estratÈgias para otimizar o tempo de resposta ao usu·rio final e garantir a recentidade dos dados apresentados.
 
