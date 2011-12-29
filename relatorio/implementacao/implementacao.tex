@@ -39,11 +39,11 @@ Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e 
 
 \subsection{Atualizador de dados independente de demanda}
 
-A segunda implementação testada foi desenvolver um sistemas cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa.
+A segunda implementação testada foi desenvolver um sistema cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa.
 
 Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados.
 
-Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Issoo pode gerar desperdício de poder computacional.
+Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Isso pode gerar desperdício de poder computacional.
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
@@ -51,3 +51,5 @@ Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não s
 \caption{Arquitetura da solução com atualizador de dados independente de demanda.}
 \label{Fig:atualizador}
 \end{center} \end{figure}
+
+Esse sistema pode ou não utilizar múltiplos processos. Para o caso de um sistema multiprocessado, foi utilizada a biblioteca \textit{multiprocessing}, que é nativa da linguagem Python. No caso, o processo pai obtém a lista de todas as cotações a serem obtidas, e as passa para os processos filhos para que eles façam o trabalho de comunicação com a fonte de dados.
