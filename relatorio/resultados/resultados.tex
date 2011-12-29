@@ -1,11 +1,41 @@
 \mychapter{Resultados}
 \label{Cap:resultados}
 
-\section{Requisições sob demanda}
+Para critérios de testes, foi analisada a solução utilizando um atualizador de dados rodando de tempos em tempos. Foram aferidos os tempos necessários para atualizar uma lista com 151 cotações variando o número de processos.
 
-\section{Atualizar todos os dados de tempos em tempos}
+Os testes foram feitos em Macbook Pro com processador Intel Core i5 2.3 GHz de 4 núcleos com 8 GB de memória RAM a 1333 MHz. Como o computador não é dedicado apenas aos testes, existem oscilações referentes a outras tarefas do sistema operacional.
 
-\subsection{Requisições sequenciais}
+\section{Requisições paralelas com múltiplos processos}
 
-\subsection{Requisições paralelas com múltiplos processos}
+Foram aferidos os tempos de atualização variando o número de processos entre 1 e 16. Para o caso com um processo, a solução se assemelha muito a uma solução sem multiprocessamento. À medida que o número de processos aumenta, o tempo necessário para atualizar todos os dados diminui até o ponto em que o tempo de escalonamento de processos começa a ficar significativo. Um ponto importante a ser observado é que o tempo de processamento efetivo é muito inferior ao tempo total, o que indica que os processadores passam muito tempo ociosos aguardando a resposta da fonte de dados externa. 
 
+\begin{table}[htbp]
+\begin{tabularx}{\linewidth}{lccc} \hline
+No. processos & Tempo total (s) & Tempo de usuário (s) & Tempo de sistema (s) \\ \hline
+1 & 138,3 & 1,01 & 0,22 \\ \hline
+2 & 76,57 & 1,26 & 0,28 \\ \hline
+3 & 50,61 & 1,41 & 0,27 \\ \hline
+4 & 40,01 & 1,57 & 0,30 \\ \hline
+5 & 33,02 & 1,71 & 0,33 \\ \hline
+6 & 26,48 & 1,75 & 0,34 \\ \hline
+7 & 24,31 & 1,92 & 0,36 \\ \hline
+8 & 20,33 & 1,99 & 0,37 \\ \hline
+9 & 19,87 & 2,15 & 0,40 \\ \hline
+10 & 16,71 & 2,25 & 0,42 \\ \hline
+11 & 15,28 & 2,42 & 0,44 \\ \hline
+12 & 15,60 & 2,54 & 0,46 \\ \hline
+13 & 11,80 & 2,63 & 0,48 \\ \hline
+14 & 11,73 & 2,74 & 0,51 \\ \hline
+15 & 11,19 & 2,85 & 0,53 \\ \hline
+16 & 11,61 & 2,96 & 0,54 \\ \hline
+\end{tabularx}
+\caption{Tabela com os tempos aferidos de acordo com o número de processos}
+\label{Tab:tempos_aferidos}
+\end{table}
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.97\linewidth]{img/grafico_tempos_aferidos}}
+\caption{Gráfico de tempos aferidos de acordo com o número de processos}
+\label{Fig:grafico_tempos_aferidos}
+\end{center} \end{figure}
