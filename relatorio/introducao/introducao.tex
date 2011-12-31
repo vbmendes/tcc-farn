@@ -11,7 +11,7 @@
 \mychapter{Introdução}
 \label{Cap:introducao}
 
-Este trabalho trata de um serviço que deve servir seus usuários os mais rapidamente com cotações geradas por uma fonte de dados externa, que as fornece através de um \textit{Web service} SOAP. Existem inúmeras formas de resolver esse problema. Neste trabalho serão abordadas algumas técnicas possíveis.
+Este trabalho trata de um portal de internet que deve servir seus usuários os mais rapidamente com cotações geradas por uma fonte de dados externa, que as fornece através de um \textit{Web service} SOAP. Existem inúmeras formas de resolver esse problema. Neste trabalho serão abordadas algumas técnicas possíveis.
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
@@ -22,19 +22,25 @@ Este trabalho trata de um serviço que deve servir seus usuários os mais rapidame
 
 \section{Descrição geral}
 
-O trabalho é baseado em um \textit{Web Service} SOAP, que é um protocolo para troca de informações estruturadas em uma plataforma descentralizada e distribuída.
+O trabalho trata da integração de um portal de internet com uma fonte de cotações situada em uma rede diferente, cujo canal de comunicação é a internet. A fonte de dados disponibiliza as cotações através de um \textit{web service} SOAP, que é um protocolo para troca de informações estruturadas em uma plataforma descentralizada e distribuída.
 
-Um portal de internet precisa oferecer a seus usuários em tempo real dados de um fornecedor que os disponibiliza através de um \textit{web service}. Para não ter atraso na informação oferecida, ele precisa requisitar ao fornecedor de dados o mais frequentemente possível ao mesmo tempo que tem que manter um bom tempo de resposta para seus usuários.
+O portal de internet precisa oferecer em tempo real as cotações vindas da fonte de dados. Para não ter atraso na informação oferecida, ele precisa requisitar ao fornecedor de dados o mais frequentemente possível ao mesmo tempo que tem que manter um bom tempo de resposta para seus usuários.
+
+O trabalho irá tratar da otimização da performance de atendimento aos usuários mantendo as cotações o mais atualizadas possível.
+
+\subsection{Cotações financeiras}
+
+O mercado de cotações financeiras está em constante variação e a recenticidade dos dados é primordial para a tomada de decisão dos investidores. Os valores variam a cada segundo, mas dado que seria muito custoso do ponto de vista computacional atualizar as cotações de interesse nessa frequência, é aceitável ter um tempo de atualização de alguns minutos. O desafio é diminuir esse tempo ao máximo possível. 
 
 \section{Objetivo}
 
-O objetivo do trabalho é resolver os problemas relacionados à otimização do tempo de resposta e à frequência de atualização do dado. Por se tratar de um problema de otimização de tempo de resposta é necessário pensar na latência e no \textit{overhead} gerado por uma conexão HTTP e analisar a melhor arquitetura de sistema possível.
+O objetivo do trabalho é resolver os problemas relacionados à otimização do tempo de resposta ao usuário final e à frequência de atualização do dado junto à fonte de dados externa. Por se tratar de um problema de otimização de tempo de resposta é necessário pensar na latência e no \textit{overhead} gerado por uma conexão HTTP através da internet e analisar a melhor arquitetura de sistema possível.
 
 \section{Motivação}
 
-Com o avanço da informática e de conceitos como a computação em nuvem, cada vez mais os servidores estão em constante comunicação ao redor do mundo. Seja para autenticar usuários, seja para persistir dados ou seja para solicitar dados. Um portal de notícias, por exemplo, exibe, além das notícias, dados meteorológicos e econômicos. Esses dados normalmente não são produzidos pelo próprio portal, portanto são necessárias parcerias com fornecedores de conteúdo que disponham de tal informação. Estes fornecedores, em geral, disponibilizam os dados através de \textit{Web Services}.
+Com o avanço da informática e de conceitos como a computação em nuvem, cada vez mais os servidores estão em constante comunicação ao redor do mundo. Seja para autenticar usuários, seja para persistir dados ou seja para solicitar dados. Um portal de notícias, por exemplo, exibe, além das notícias, cotações financeiras. Essas cotações normalmente não são produzidos pelo próprio portal, portanto é necessária uma parceria com um fornecedor de conteúdo que disponha de tal informação. Em geral, fornecedores de cotações disponibilizam os dados através de \textit{web service}.
 
-Dado que no mundo jornalístico a agilidade na entrega de informações é um fator primordial para o sucesso, surge a necessidade de otimizar o tempo de consumo de tais fornecedores a fim de entregar aos usuários a informação mais recente possível.
+Dado que no mundo jornalístico a agilidade na entrega de informações é um fator primordial para o sucesso, surge a necessidade de otimizar o tempo de consumo de tal fornecedor a fim de entregar aos usuários a informação mais recente possível em tempo hábil.
 
 \section{Metodologia}
 

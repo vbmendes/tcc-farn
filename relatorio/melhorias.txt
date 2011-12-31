@@ -1,0 +1,10 @@
+ok- introdução ficou vaga
+ok- detalhar que o problema em questão é de atualização de cotações em um mesmo servidor
+ok- falar que o uso do SOAP é devido a restrição da fonte de dados
+- explicar como o multiprocessamento melhora o desempenho
+- comparar o tempo de acesso sem banco com o tempo de acesso com banco
+- o que melhorar
+ - ultilizar mais máquinas pode melhorar (falar de variáveis como conexão e limite do servidor)
+ - definir prioridades
+- falar que como os dados são salvos em banco de dados, esses dados podem ser consumidos por qualquer linguagem, mesmo que a camada de atualização seja em python
+- testar Jython se possível
