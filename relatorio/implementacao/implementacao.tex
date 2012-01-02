@@ -55,11 +55,11 @@ A segunda implementação testada foi desenvolver um sistema cuja função é requisi
 \label{Fig:diagrama_sequencia_banco_de_dados}
 \end{center} \end{figure}
 
-Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados. O fato dados serem salvos em um banco de dados também possibilita que a aplicação que vai consumir esses dados seja em qualquer linguagem de programação, seja Java, Ruby, Python ou qualquer outra que possibilite a comunicação com o banco de dados. No caso, o sistema que consome os dados do banco de dados foi desenvolvido em Python, utilizando a biblioteca CherryPy \cite{ref-cherrypy} como handler HTTP. O sistema foi feito utilizando o padrão MVC \cite{ref-mvc}.
+Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados. O fato dos dados serem salvos em um banco de dados também possibilita que a aplicação que vai consumir esses dados seja em qualquer linguagem de programação, seja Java, Ruby, Python ou qualquer outra que possibilite a comunicação com o banco de dados. No caso, o sistema que consome os dados do banco de dados foi desenvolvido em Python, utilizando a biblioteca CherryPy \cite{ref-cherrypy} como handler HTTP. O sistema foi feito utilizando o padrão MVC \cite{ref-mvc}.
 
 Como ponto fraco, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Isso pode gerar desperdício de poder computacional.
 
-Esse sistema pode ou não utilizar múltiplos processos. Para o caso de um sistema multiprocessado, foi utilizada a biblioteca \textit{multiprocessing}, que é nativa da linguagem Python. No caso, o processo pai obtém a lista de todas as cotações a serem obtidas, e as passa para os processos filhos para que eles façam o trabalho de comunicação com a fonte de dados.
+Esse atualizador pode ou não utilizar múltiplos processos. Para o caso de um sistema multiprocessado, foi utilizada a biblioteca \textit{multiprocessing}, que é nativa da linguagem Python. No caso, o processo pai obtém a lista de todas as cotações a serem obtidas, e as passa para os processos filhos para que eles façam o trabalho de comunicação com a fonte de dados.
 
 A atualização de uma cotação é feita de acordo com o diagrama de sequência da figura~\ref{Fig:diagrama_sequencia_atualizador}. Cada processo repete este procedimento até que o processo pai não tenha mais cotações para serem atualizadas.
 

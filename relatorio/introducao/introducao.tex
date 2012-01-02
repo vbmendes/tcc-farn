@@ -11,7 +11,7 @@
 \mychapter{Introdução}
 \label{Cap:introducao}
 
-Este trabalho trata de um portal de internet que deve servir seus usuários os mais rapidamente com cotações geradas por uma fonte de dados externa, que as fornece através de um \textit{Web service} SOAP. Existem inúmeras formas de resolver esse problema. Neste trabalho serão abordadas algumas técnicas possíveis.
+Este trabalho trata de um portal de internet que deve servir seus usuários o mais rapidamente com cotações geradas por uma fonte de dados externa, que as fornece através de um \textit{Web service} SOAP. Existem inúmeras formas de resolver esse problema. Neste trabalho serão abordadas algumas técnicas possíveis.
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
@@ -32,7 +32,7 @@ O trabalho irá tratar da otimização da performance de atendimento aos usuários m
 
 Cotações financeiras são preços de mercado de títulos, papéis de créditos, ações, mercadorias, etc.
 
-Tais cotações estão em constante variação e a recenticidade dos dados é primordial para a tomada de decisão dos investidores. Os valores variam a cada segundo, mas dado que seria muito custoso do ponto de vista computacional atualizar as cotações de interesse nessa frequência, é aceitável ter um tempo de atualização de alguns minutos. O desafio é diminuir esse tempo ao máximo possível. 
+Tais cotações estão em constante variação e a recenticidade dos dados é primordial para a tomada de decisão dos investidores. Os valores variam a cada segundo, mas dado que seria muito custoso do ponto de vista computacional atualizar as cotações de interesse nesta frequência, é aceitável ter um tempo de atualização de alguns minutos. O desafio é diminuir esse tempo ao máximo possível.
 
 \section{Objetivo}
 
@@ -58,11 +58,11 @@ O projeto foi dividido em quatro partes:
 
 \subsection{Estudo sobre \textit{web services} e o protocolo SOAP}
 
-Por se tratar de atualização de \textit{web services} foi necessário um estudo sobre os conceitos desta tecnologia.
+Por se tratar de consulta a um \textit{web service} SOAP foi necessário um estudo sobre esta tecnologia.
 
 \subsection{Estudo sobre computação paralela}
 
-O projeto tem como pré-requisito oferecer um baixo tempo de resposta. A computação paralela é um paradigma interessante para otimizar tarefas computacionais e explorar a máquina o máximo possível.
+O projeto tem como pré-requisito oferecer um baixo tempo de resposta. A computação paralela é um paradigma interessante para otimizar tarefas computacionais e explorar a máquina ao máximo possível.
 
 \subsection{Implementação de cliente para \textit{web service} SOAP}
 

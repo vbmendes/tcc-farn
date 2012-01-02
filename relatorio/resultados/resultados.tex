@@ -12,7 +12,7 @@ Foram realizados dois testes::
 
 \section{Teste de desempenho no atendimento ao usuário}
 
-Foram aferidos o tempo médio de resposta (figura~\ref{Fig:grafico_tempos_de_resposta}), o número de usuários atendidos por segundo, chamado de \textit{throughput} (figura~\ref{Fig:grafico_throughput}), e o número de requisições atendidas em uma simulação de um usuário requisitando repetidas vezes as duas soluções propostas (atualização de dados sob demanda ao web service e obtenção de dados de um banco de dados atualizado independentemente de demanda). A simulação durou sessenta segundos e foi realizada utilizando a ferramenta Pylot \cite{ref-pylot}.
+Foram aferidos o tempo médio de resposta (figura~\ref{Fig:grafico_tempos_de_resposta}), o número de requisições atendidas por segundo, chamado de \textit{throughput} (figura~\ref{Fig:grafico_throughput}), e o número de requisições atendidas em uma simulação de um usuário requisitando cotações repetidas vezes às duas soluções propostas (atualização de dados sob demanda ao web service e obtenção de dados de um banco de dados atualizado independentemente de demanda). A simulação durou sessenta segundos e foi realizada utilizando a ferramenta Pylot \cite{ref-pylot}.
 
 O desempenho da solução utilizando banco de dados foi cerca de cinco vezes superior à solução com atualização sob demanda como mostra a tabela~\ref{Tab:comparacao_de_solucoes}.
 
@@ -20,7 +20,7 @@ O desempenho da solução utilizando banco de dados foi cerca de cinco vezes super
 \begin{tabularx}{\linewidth}{lccc} \hline
 Solução & Tempo médio (s) & \textit{Throughput} & Requisições \\ \hline
 Utilizando banco de dados & 1,13 & 0,88 & 53 \\ \hline
-Atualização sob demanda & 5,53 & 0,17 & 10 \\ \hline
+Consulta sob demanda ao \textit{web service} & 5,53 & 0,17 & 10 \\ \hline
 \end{tabularx}
 \caption{Tabela com os resultados dos testes de performance das soluções}
 \label{Tab:comparacao_de_solucoes}
@@ -39,6 +39,8 @@ Atualização sob demanda & 5,53 & 0,17 & 10 \\ \hline
 \caption{Gráfico comparativo do throughput (número de usuários atendidos por segundo)}
 \label{Fig:grafico_throughput}
 \end{center} \end{figure}
+
+\clearpage
 
 \section{Teste de desempenho do atualizador de cotações}
 
