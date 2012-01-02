@@ -20,3 +20,4 @@ server/parts
 .DS_Store
 *.texshop
 *.synctex.gz
+pylot_1.26
