@@ -7,7 +7,7 @@ from server.db import Session
 from server.models import Currency
 
 
-class HelloWorld(object):
+class CurrencyService(object):
     def index(self, currency):
         return json.dumps({'rate': CurrencyClient().get_rate(currency)})
     index.exposed = True
@@ -17,5 +17,5 @@ class HelloWorld(object):
         return json.dumps({'rate': session.query(Currency).filter_by(code=currency).first().rate})
     from_local.exposed = True
 
-cherrypy.quickstart(HelloWorld())
+cherrypy.quickstart(CurrencyService())
 
