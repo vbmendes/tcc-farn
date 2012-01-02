@@ -1,13 +1,50 @@
 \mychapter{Resultados}
 \label{Cap:resultados}
 
-Para critérios de testes, foi analisada a solução utilizando um atualizador de dados rodando de tempos em tempos. Foram aferidos os tempos necessários para atualizar uma lista com 151 cotações variando o número de processos.
-
 Os testes foram feitos em Macbook Pro com processador Intel Core i5 2.3 GHz de 4 núcleos com 8 GB de memória RAM a 1333 MHz. Como o computador não é dedicado apenas aos testes, existem oscilações referentes a outras tarefas do sistema operacional.
 
-\section{Requisições paralelas com múltiplos processos}
+Foram realizados dois testes::
 
-Foram aferidos os tempos de atualização variando o número de processos entre 1 e 16. Para o caso com um processo, a solução se assemelha muito a uma solução sem multiprocessamento. À medida que o número de processos aumenta, o tempo necessário para atualizar todos os dados diminui até o ponto em que o tempo de escalonamento de processos começa a ficar significativo. Um ponto importante a ser observado é que o tempo de processamento efetivo é muito inferior ao tempo total, o que indica que os processadores passam muito tempo ociosos aguardando a resposta da fonte de dados externa. 
+\begin{itemize}
+\item Teste de desempenho no atendimento ao usuário;
+\item Teste de desempenho do atualizador de cotações.
+\end{itemize}
+
+\section{Teste de desempenho no atendimento ao usuário}
+
+Foram aferidos o tempo médio de resposta (figura~\ref{Fig:grafico_tempos_de_resposta}), o número de usuários atendidos por segundo, chamado de \textit{throughput} (figura~\ref{Fig:grafico_throughput}), e o número de requisições atendidas em uma simulação de um usuário requisitando repetidas vezes as duas soluções propostas (atualização de dados sob demanda ao web service e obtenção de dados de um banco de dados atualizado independentemente de demanda). A simulação durou sessenta segundos e foi realizada utilizando a ferramenta Pylot \cite{ref-pylot}.
+
+O desempenho da solução utilizando banco de dados foi cerca de cinco vezes superior à solução com atualização sob demanda como mostra a tabela~\ref{Tab:comparacao_de_solucoes}.
+
+\begin{table}[htbp]
+\begin{tabularx}{\linewidth}{lccc} \hline
+Solução & Tempo médio (s) & \textit{Throughput} & Requisições \\ \hline
+Utilizando banco de dados & 1,13 & 0,88 & 53 \\ \hline
+Atualização sob demanda & 5,53 & 0,17 & 10 \\ \hline
+\end{tabularx}
+\caption{Tabela com os resultados dos testes de performance das soluções}
+\label{Tab:comparacao_de_solucoes}
+\end{table}
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.97\linewidth]{img/grafico_tempos_de_resposta}}
+\caption{Gráfico comparativo de tempo médio de resposta em segundos}
+\label{Fig:grafico_tempos_de_resposta}
+\end{center} \end{figure}
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.97\linewidth]{img/grafico_throughput}}
+\caption{Gráfico comparativo do throughput (número de usuários atendidos por segundo)}
+\label{Fig:grafico_throughput}
+\end{center} \end{figure}
+
+\section{Teste de desempenho do atualizador de cotações}
+
+O objetivo do teste de desempenho do atualizador foi analisar o impacto da variação do número de processos no desempenho da atualização das cotações.
+
+Foram aferidos os tempos de atualização de 151 cotações variando o número de processos entre 1 e 16. Para o caso com um processo, a solução se assemelha muito a uma solução sem multiprocessamento. À medida que o número de processos aumenta, o tempo necessário para atualizar todos os dados diminui até o ponto em que o tempo de escalonamento de processos começa a ficar significativo. Um ponto importante a ser observado é que o tempo de processamento efetivo é muito inferior ao tempo total, o que indica que os processadores passam muito tempo ociosos aguardando a resposta da fonte de dados externa. 
 
 \begin{table}[htbp]
 \begin{tabularx}{\linewidth}{lccc} \hline

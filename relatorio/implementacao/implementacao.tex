@@ -26,10 +26,6 @@ Foram desenvolvidas duas implementações para o problema com o objetivo de encont
 
 \subsection{Atualização de dados sob demanda}
 
-Um das implementações testadas foi conectar à API para obter uma cotação apenas quando o usuário requisitasse. Isso evita a atualização de cotações que não estão sendo requisitadas por usuário nenhum. Em contrapartida, o tempo de resposta ao usuário será alto, visto que será acrescido ao tempo de processamento, o tempo da requisição à fonte de dados, que é através da internet e, portanto, lenta.
-
-Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e será processada pelo mesmo processo utilizado para receber e responder a requisição do usuário, o que faz com que processos que deveriam responder usuários fiquem ocupados com requisições a fontes de dados externas, diminuindo o número de usuários atendidos por segundo.
-
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
 \fbox{\includegraphics[width=0.95\linewidth]{img/requisicoes_sob_demanda}}
@@ -37,13 +33,11 @@ Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e 
 \label{Fig:atualizacao_sob_demanda}
 \end{center} \end{figure}
 
+Um das implementações testadas foi conectar à API para obter uma cotação apenas quando o usuário requisitasse. Isso evita a atualização de cotações que não estão sendo requisitadas por usuário nenhum. Em contrapartida, o tempo de resposta ao usuário será alto, visto que será acrescido ao tempo de processamento, o tempo da requisição à fonte de dados, que é através da internet e, portanto, lenta.
+
+Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e será processada pelo mesmo processo utilizado para receber e responder a requisição do usuário, o que faz com que processos que deveriam responder usuários fiquem ocupados com requisições a fontes de dados externas, diminuindo o número de usuários atendidos por segundo.
+
 \subsection{Atualizador de dados independente de demanda}
-
-A segunda implementação testada foi desenvolver um sistema cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa.
-
-Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados.
-
-Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Isso pode gerar desperdício de poder computacional.
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
@@ -52,4 +46,26 @@ Em contrapartida, o sistema deve atualizar todas as cotações, mesmo as que não s
 \label{Fig:atualizador}
 \end{center} \end{figure}
 
+A segunda implementação testada foi desenvolver um sistema cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa. Este processo pode ser visto no diagrama de sequência da figura~\ref{Fig:diagrama_sequencia_banco_de_dados}.
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.95\linewidth]{img/diagrama_sequencia_banco_de_dados}}
+\caption{Diagrama de sequência da requisição de um usuário ao sistema.}
+\label{Fig:diagrama_sequencia_banco_de_dados}
+\end{center} \end{figure}
+
+Outra vantagem é que o banco de dados faz o papel de \textit{cachear} os dados e mesmo que exista falha na comunicação com a fonte de dados, os usuários continuarão recebendo os dados, mesmo que desatualizados. O fato dados serem salvos em um banco de dados também possibilita que a aplicação que vai consumir esses dados seja em qualquer linguagem de programação, seja Java, Ruby, Python ou qualquer outra que possibilite a comunicação com o banco de dados. No caso, o sistema que consome os dados do banco de dados foi desenvolvido em Python, utilizando a biblioteca CherryPy \cite{ref-cherrypy} como handler HTTP. O sistema foi feito utilizando o padrão MVC \cite{ref-mvc}.
+
+Como ponto fraco, o sistema deve atualizar todas as cotações, mesmo as que não são demandadas tão frequentemente pelos usuários. Isso pode gerar desperdício de poder computacional.
+
 Esse sistema pode ou não utilizar múltiplos processos. Para o caso de um sistema multiprocessado, foi utilizada a biblioteca \textit{multiprocessing}, que é nativa da linguagem Python. No caso, o processo pai obtém a lista de todas as cotações a serem obtidas, e as passa para os processos filhos para que eles façam o trabalho de comunicação com a fonte de dados.
+
+A atualização de uma cotação é feita de acordo com o diagrama de sequência da figura~\ref{Fig:diagrama_sequencia_atualizador}. Cada processo repete este procedimento até que o processo pai não tenha mais cotações para serem atualizadas.
+
+\begin{figure}[htbp!] \begin{center}
+% fbox faz uma borda ao redor do seu argumento
+\fbox{\includegraphics[width=0.95\linewidth]{img/diagrama_sequencia_atualizador}}
+\caption{Diagrama de sequência da atualização de uma cotação.}
+\label{Fig:diagrama_sequencia_atualizador}
+\end{center} \end{figure}

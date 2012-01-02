@@ -3,10 +3,14 @@
 
 Computação paralela é uma forma de computação em que vários cálculos são realizados simultaneamente \cite{ref-computacao-paralela}. A maneira tradicional de executar software é a sequencial, o que faz com que um passo de execução só se inicie após a conclusão do passo anterior. Quando se tem apenas uma unidade de processamento esse código é ótimo na maioria dos casos. Já para múltiplas unidades de processamento, o que hoje já é realidade até mesmo em computadores pessoais, o processo sequêncial usaria apenas uma das unidades enquanto as outras ficariam ociosas. A situação se agrava ainda mais quando o processo precisa esperar alguma tarefa como entrada e saída de dados (I/O), pois estas tarefas demandam tempo e atrasariam a execução do processo enquanto a unidade de processamento ficaria ociosa.
 
-A proposta da computação paralela é reduzir o tempo de resposta de um software através da divisão do processamento entre as unidades disponíveis. Em um problema baseado em I/O como a atualização de dados através de um \textit{web service} ficam ainda mais claros os benefícios da computação paralela.
+A proposta da computação paralela é reduzir o tempo de resposta de um software através da divisão do processamento entre as unidades disponíveis. Em um problema baseado em I/O como a atualização de cotações através de um \textit{web service} ficam ainda mais claros os benefícios da computação paralela.
 
-O procedimento de solicitar dados deve ser repetido diversas vezes alterando apenas o parâmetro de entrada. O processo de atualização faz chamadas de I/O ao \textit{web service} e fica ocioso esperando a resposta. Neste momento a unidade de processamento pode processar outra atualização que fará o mesmo procedimento. O que caracteriza um \textit{pool} de processos coordenados por um processo pai que apenas atribui parâmetros de entrada a cada processo.
+O procedimento de solicitar cotações deve ser repetido diversas vezes alterando apenas o parâmetro de entrada. O processo de atualização faz chamadas de I/O ao \textit{web service} e fica ocioso esperando a resposta. Neste momento a unidade de processamento pode processar outra atualização que fará o mesmo procedimento. O que caracteriza um \textit{pool} de processos coordenados por um processo pai que apenas atribui parâmetros de entrada a cada processo.
 
 \section{\textit{Pool} de processos}
 
 Um \textit{pool} de processos é um grupo de processos à disposição de um pai para executar tarefas semelhantes. Geralmente o pai tem um conjunto de parâmetros de entrada e os distribui para cada processo do \textit{pool}, o qual assim que finalizar seu processamento, informa o pai, que se ainda não tiver endereçado todos os parâmetros de entrada, solicita que mais um seja processado.
+
+\section{Melhoria de desempenho}
+
+Com o uso do \textit{pool} de processos, as unidades de processamento não ficarão mais ociosas aguardando a resposta da fonte de dados externa. Enquanto um processo aguarda a resposta, a unidade estará sendo utilizada por um outro processo que estará processando uma outra requisição ou resposta da fonte de dados. Ao evitar o desperdício de tempo das unidades de processamento, o trabalho de atualizar todas as cotações será otimizado.
