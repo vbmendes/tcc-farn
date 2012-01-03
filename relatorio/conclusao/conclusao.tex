@@ -1,7 +1,30 @@
-\mychapter{Conclusão}
+\mychapter{Conclusões e Perspectivas}
 \label{Cap:conclusao}
 
 Com este trabalho é possível concluir que a integração entre sistemas distintos é uma área muito desafiadora, principalmente quando envolve requisitos de atualização em tempo real. Muitas são as possibilidades de arquitetura para otimizar a integração, cabe ao responsável pelo projeto analisar o problema e selecionar a melhor opção.
 
 A escolha desta opção não deve ser apenas teórica. Testes de desempenho são muito importantes e provas de conceito se fazem essenciais.
+
+\section{Pontos de melhoria}
+
+Para otimizar ainda mais a performance da atualização dos dados, é possível, entre outros, melhorar a infraestrutura ou priorizar atualização das cotações mais importantes.
+
+\subsection{Melhorias de infraestrutura}
+
+Existem três grandes variáveis na infraestrutura do atualizador das cotações. São elas::
+
+\begin{itemize}
+\item O(s) servidor(es) que fornece(m) o \textit{web service}, que no caso não está(ão) sob controle;
+\item O(s) servidor(es) que rodará(ão) os processos de atualização;
+\item A conexão entre os servidores.
+\end{itemize}
+
+A conexão agilizará a troca de mensagens entre os servidores, mas de nada adianta ter uma velocidade superdimensionada e servidores com baixa capacidade de atendimento.
+
+Um ponto a ser testado é distribuição da atualização em mais de um servidor, possibilitando que a aplicação escale horizontalmente. Neste caso, o servidor da fonte de dados pode ficar sobrecarregado.
+
+\subsection{Priorizar atualização de cotações}
+
+No mercado de cotações sempre existem papéis mais relevantes que outros. A cotação do Dólar Americano é consideravelmente mais relevante que a do Dólar do Zimbabwe. Portanto, é possível estabelecer prioridades entre as cotações de forma que um grupo seleto delas seja atualizado mais frequentemente.
+
 
