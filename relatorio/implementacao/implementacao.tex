@@ -46,7 +46,7 @@ Um outro problema neste caso é que a requisição à fonte de dados é bloqueante e 
 \label{Fig:atualizador}
 \end{center} \end{figure}
 
-A segunda implementação testada foi desenvolver um sistema cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa. Este processo pode ser visto no diagrama de sequência da figura~\ref{Fig:diagrama_sequencia_banco_de_dados}.
+A segunda implementação testada foi desenvolver um sistema cuja função é requisitar as cotações à fonte de dados em uma frequência determinada e salvá-las em um banco de dados. Desta forma, a cada requisição de usuário, o sistema iria fazer apenas consultas ao banco de dados, que são muito mais rápidas que acessar uma fonte de dados externa. O ciclo completo, envolvendo atualização e atendimento aos usuários está representado na figura~\ref{Fig:atualizador}. O processo de atendimento aos usuários pode ser visto no diagrama de sequência da figura~\ref{Fig:diagrama_sequencia_banco_de_dados}.
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento

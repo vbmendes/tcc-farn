@@ -3,11 +3,11 @@ ok- detalhar que o problema em questão é de atualização de cotações em um 
 ok- falar que o uso do SOAP é devido a restrição da fonte de dados
 ok- explicar como o multiprocessamento melhora o desempenho
 ok- diagrama de sequencia da implementação
-- comparar o tempo de acesso sem banco com o tempo de acesso com banco
+ok- comparar o tempo de acesso sem banco com o tempo de acesso com banco
 ok- o que melhorar
 ok - ultilizar mais máquinas pode melhorar (falar de variáveis como conexão e limite do servidor)
 ok - definir prioridades
 ok- falar que como os dados são salvos em banco de dados, esses dados podem ser consumidos por qualquer linguagem, mesmo que a camada de atualização seja em python
 not- testar Jython se possível
-- referencia cherypy
-- referencia MVC
+ok- referencia cherypy
+ok- referencia MVC

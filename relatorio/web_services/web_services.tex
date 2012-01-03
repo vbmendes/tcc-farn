@@ -1,7 +1,7 @@
 \mychapter{\textit{Web Services}}
 \label{Cap:web_services}
 
-\textit{Web service} é uma interface acessível através da rede para uma funcionalidade de uma aplicação construída usando tecnologias definidas como padrão na Internet \cite{ref-oreilly-soap}. É apenas mais uma camada de troca de mensagens entre uma aplicação e outra. A principal vantagem no seu uso é prover comunicação entre diferentes aplicações independente da plataforma ou linguagem de programação utilizada por elas, o que garante interoperabilidade entre sistemas desde que ambos utilizem o mesmo protocolo de comunicação entre si.
+\textit{Web service} é uma interface acessível através da rede para uma funcionalidade de uma aplicação construída usando tecnologias definidas como padrão na Internet \cite{ref-oreilly-soap}. É apenas mais uma camada de troca de mensagens entre uma aplicação e outra. A principal vantagem no seu uso é prover comunicação entre diferentes aplicações independente da plataforma ou linguagem de programação utilizada por elas, o que garante interoperabilidade entre sistemas desde que ambos utilizem o mesmo protocolo de comunicação entre si (figura~\ref{Fig:web_services}).
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
@@ -10,7 +10,7 @@
 \label{Fig:web_services}
 \end{center} \end{figure}
 
-Através do uso de \textit{web services} é possível fazer com que uma aplicação faça chamadas de métodos remotos de outra aplicação. É como gerar uma requisição HTTP que encapsule qual método será chamado e quais os parâmetros e esperar uma resposta com o resultado da chamada do método. Para isso se faz necessário quebrar a camada de aplicação da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplicação, descoberta, descrição e empacotamento.
+Através do uso de \textit{web services} é possível fazer com que uma aplicação faça chamadas de métodos remotos de outra aplicação. É como gerar uma requisição HTTP que encapsule qual método será chamado e quais os parâmetros e esperar uma resposta com o resultado da chamada do método. Para isso se faz necessário quebrar a camada de aplicação da pilha de camadas do modelo de redes TCP/IP em quatro camadas: aplicação, descoberta, descrição e empacotamento (figura~\ref{Fig:camadas_web_services}).
 
 \begin{figure}[htbp!] \begin{center}
 % fbox faz uma borda ao redor do seu argumento
