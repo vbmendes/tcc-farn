@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Table, Column, Integer, String, Float, MetaData, ForeignKey
+from sqlalchemy import create_engine, Table, Column, Integer, String, Float, MetaData
 from sqlalchemy.orm import mapper, sessionmaker
 
 from models import Currency

@@ -5,9 +5,11 @@ import datetime
 
 from server.currencies import currencies
 
+
 def index(currency):
     response = urllib.urlopen('http://localhost:8080/index/%s/' % currency)
     print response.read()
+
 
 def from_local(currency):
     response = urllib.urlopen('http://localhost:8080/from_local/%s/' % currency)
@@ -21,4 +23,3 @@ if __name__ == '__main__':
         currencies = currencies[:int(argv[3])]
     p.map(method, currencies)
     print datetime.datetime.now() - inicio
-

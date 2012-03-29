@@ -73,15 +73,15 @@ except ImportError:
 if sys.platform == 'win32':
     def quote(c):
         if ' ' in c:
-            return '"%s"' % c # work around spawn lamosity on windows
+            return '"%s"' % c  # work around spawn lamosity on windows
         else:
             return c
 else:
-    def quote (c):
+    def quote(c):
         return c
 
 cmd = 'from setuptools.command.easy_install import main; main()'
-ws  = pkg_resources.working_set
+ws = pkg_resources.working_set
 
 if USE_DISTRIBUTE:
     requirement = 'distribute'
@@ -94,18 +94,16 @@ if is_jython:
     assert subprocess.Popen([sys.executable] + ['-c', quote(cmd), '-mqNxd',
            quote(tmpeggs), 'zc.buildout' + VERSION],
            env=dict(os.environ,
-               PYTHONPATH=
-               ws.find(pkg_resources.Requirement.parse(requirement)).location
+               PYTHONPATH=ws.find(pkg_resources.Requirement.parse(requirement)).location
                ),
            ).wait() == 0
 
 else:
     assert os.spawnle(
-        os.P_WAIT, sys.executable, quote (sys.executable),
-        '-c', quote (cmd), '-mqNxd', quote (tmpeggs), 'zc.buildout' + VERSION,
+        os.P_WAIT, sys.executable, quote(sys.executable),
+        '-c', quote(cmd), '-mqNxd', quote(tmpeggs), 'zc.buildout' + VERSION,
         dict(os.environ,
-            PYTHONPATH=
-            ws.find(pkg_resources.Requirement.parse(requirement)).location
+            PYTHONPATH=ws.find(pkg_resources.Requirement.parse(requirement)).location
             ),
         ) == 0
 
